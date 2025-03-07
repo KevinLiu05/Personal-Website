@@ -1,0 +1,593 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>More About Kaiwen Liu</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/js/all.min.js"></script>
+    <style>
+        :root {
+            --primary: #2d3e50;
+            --secondary: #3498db;
+            --accent: #1abc9c;
+            --light: #ecf0f1;
+            --dark: #2c3e50;
+            --shadow: rgba(0, 0, 0, 0.1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+        }
+
+        header {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            color: white;
+            padding: 1.5rem 0;
+            position: relative;
+        }
+
+        .header-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-decoration: none;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo span {
+            background-color: var(--accent);
+            width: 40px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin-right: 0.8rem;
+        }
+
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            gap: 1.5rem;
+        }
+
+        .nav-item a {
+            color: white;
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-item a::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 2px;
+            bottom: 0;
+            left: 0;
+            background-color: var(--accent);
+            transition: width 0.3s;
+        }
+
+        .nav-item a:hover {
+            color: var(--accent);
+        }
+
+        .nav-item a:hover::after {
+            width: 100%;
+        }
+
+        .hamburger {
+            display: none;
+            cursor: pointer;
+        }
+
+        .bar {
+            display: block;
+            width: 25px;
+            height: 3px;
+            margin: 5px auto;
+            transition: all 0.3s;
+            background-color: white;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: var(--primary);
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 50px;
+            height: 3px;
+            background-color: var(--accent);
+        }
+
+        .content-section {
+            background-color: white;
+            border-radius: 8px;
+            padding: 2rem;
+            box-shadow: 0 5px 15px var(--shadow);
+            margin-bottom: 2rem;
+        }
+
+        .content-image {
+            max-width: 600px;
+            margin: 2rem auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px var(--shadow);
+        }
+
+        .content-image img {
+            width: 100%;
+            display: block;
+        }
+
+        .button {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 0.8rem 1.5rem;
+            border-radius: 30px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s;
+            box-shadow: 0 5px 15px rgba(26, 188, 156, 0.3);
+            margin-top: 1.5rem;
+            border: none;
+            cursor: pointer;
+        }
+
+        .button:hover {
+            background-color: #16a085;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(26, 188, 156, 0.4);
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+
+        .skill-item {
+            background-color: var(--light);
+            padding: 1.2rem;
+            border-radius: 8px;
+            box-shadow: 0 3px 10px var(--shadow);
+            transition: all 0.3s;
+        }
+
+        .skill-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px var(--shadow);
+        }
+
+        .skill-item h3 {
+            color: var(--primary);
+            margin-bottom: 0.8rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .skill-item p {
+            color: var(--dark);
+            font-size: 0.95rem;
+        }
+
+        .publications-list {
+            list-style: none;
+        }
+
+        .publication-item {
+            margin-bottom: 1.5rem;
+            padding-bottom: 1.5rem;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .publication-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .publication-title {
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-authors {
+            font-style: italic;
+            color: var(--secondary);
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-venue {
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+
+        .publication-year {
+            color: var(--accent);
+            font-weight: 600;
+        }
+
+        .certifications-list {
+            list-style: none;
+            margin-top: 1.5rem;
+        }
+
+        .certification-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.2rem;
+            padding-bottom: 1.2rem;
+            border-bottom: 1px solid var(--light);
+        }
+
+        .certification-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
+        }
+
+        .certification-icon {
+            background-color: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            font-size: 1.5rem;
+        }
+
+        .certification-details h3 {
+            color: var(--primary);
+            margin-bottom: 0.3rem;
+        }
+
+        .certification-details p {
+            color: var(--secondary);
+            font-size: 0.9rem;
+        }
+
+        .back-to-top {
+            position: fixed;
+            bottom: 2rem;
+            right: 2rem;
+            background-color: var(--accent);
+            color: white;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            opacity: 0;
+            visibility: hidden;
+            transition: all 0.3s;
+        }
+
+        .back-to-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .back-to-top:hover {
+            background-color: #16a085;
+            transform: translateY(-3px);
+        }
+
+        footer {
+            background-color: var(--primary);
+            color: white;
+            text-align: center;
+            padding: 2rem;
+            margin-top: 2rem;
+        }
+
+        .footer-content {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .footer-contact {
+            margin-top: 1rem;
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+        }
+
+        .footer-contact a {
+            color: white;
+            text-decoration: none;
+            transition: color 0.3s;
+        }
+
+        .footer-contact a:hover {
+            color: var(--accent);
+        }
+
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            color: white;
+            margin-bottom: 1rem;
+            background-color: var(--accent);
+            width: 60px;
+            height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+        }
+
+        @media screen and (max-width: 768px) {
+            .hamburger {
+                display: block;
+            }
+
+            .hamburger.active .bar:nth-child(2) {
+                opacity: 0;
+            }
+
+            .hamburger.active .bar:nth-child(1) {
+                transform: translateY(8px) rotate(45deg);
+            }
+
+            .hamburger.active .bar:nth-child(3) {
+                transform: translateY(-8px) rotate(-45deg);
+            }
+
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                gap: 0;
+                flex-direction: column;
+                background-color: var(--primary);
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+                padding: 1rem 0;
+                z-index: 10;
+            }
+
+            .nav-item {
+                margin: 1rem 0;
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .skills-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <a href="index.html" class="logo"><span>KL</span>Kaiwen Liu</a>
+            <nav>
+                <ul class="nav-menu">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item"><a href="index.html#skills">Skills</a></li>
+                    <li class="nav-item"><a href="index.html#projects">Projects</a></li>
+                    <li class="nav-item"><a href="index.html#experience">Experience</a></li>
+                    <li class="nav-item"><a href="index.html#contact">Contact</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                    <span class="bar"></span>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <div class="container">
+        <section class="content-section">
+            <h2 class="section-title">More About Me</h2>
+            <p>Welcome to my extended profile page! Here you'll find more detailed information about my professional journey, expertise, and accomplishments in the field of data engineering and information systems.</p>
+
+            <div class="content-image">
+                <img src="ai-generated-image.jpg" alt="Data Engineering Visualization">
+            </div>
+
+            <p>As a data engineering professional with a strong foundation in cloud services and machine learning, I've dedicated my career to building scalable and efficient data solutions. My passion lies in transforming complex data challenges into actionable insights that drive business value.</p>
+
+            <p>Throughout my academic and professional journey, I've developed expertise in AWS cloud infrastructure, ETL pipeline development, data warehousing, and predictive analytics. I'm particularly interested in recommendation systems and personalization technologies that enhance user experiences.</p>
+
+            <a href="index.html" class="button"><i class="fas fa-arrow-left"></i> Back to Home</a>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Technical Expertise</h2>
+            <p>My technical skills span across multiple domains in data engineering, cloud computing, and analytics. Here's a more detailed breakdown of my expertise:</p>
+
+            <div class="skills-grid">
+                <div class="skill-item">
+                    <h3><i class="fas fa-cloud"></i> AWS Cloud Services</h3>
+                    <p>Extensive experience with S3, EC2, Glue, Lambda, Redshift, and CloudWatch. Skilled in designing secure and scalable cloud architectures for data processing and storage.</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3><i class="fas fa-database"></i> Data Warehousing</h3>
+                    <p>Proficient in implementing and optimizing data warehousing solutions using Snowflake. Experienced in designing schemas, implementing clustering, and creating materialized views for improved query performance.</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3><i class="fas fa-code-branch"></i> ETL Development</h3>
+                    <p>Skilled in building robust ETL pipelines using PySpark, AWS Glue, and custom solutions. Experienced in implementing data validation, transformation, and loading processes with high accuracy and reliability.</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3><i class="fas fa-brain"></i> Machine Learning</h3>
+                    <p>Knowledge of predictive modeling techniques, ensemble methods, and model interpretability using LIME. Experienced in developing recommendation systems using deep learning approaches like Transformers and HRNN.</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3><i class="fas fa-chart-bar"></i> Data Visualization</h3>
+                    <p>Proficient in creating interactive dashboards and visualizations using Tableau and Power BI. Skilled in presenting complex data insights in clear, actionable formats for stakeholders.</p>
+                </div>
+
+                <div class="skill-item">
+                    <h3><i class="fas fa-code"></i> Programming Languages</h3>
+                    <p>Strong programming skills in Python, SQL, R, and C#. Experienced in developing data processing scripts, analytical models, and automation solutions.</p>
+                </div>
+            </div>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Certifications</h2>
+            <p>I am committed to continuous learning and professional development. Here are some of my relevant certifications:</p>
+
+            <ul class="certifications-list">
+                <li class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fab fa-aws"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>AWS Certified Data Analytics - Specialty</h3>
+                        <p>Amazon Web Services | 2024</p>
+                    </div>
+                </li>
+
+                <li class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-database"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>Snowflake SnowPro Core Certification</h3>
+                        <p>Snowflake Inc. | 2024</p>
+                    </div>
+                </li>
+
+                <li class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-chart-line"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>Tableau Desktop Specialist</h3>
+                        <p>Tableau Software | 2023</p>
+                    </div>
+                </li>
+
+                <li class="certification-item">
+                    <div class="certification-icon">
+                        <i class="fas fa-cogs"></i>
+                    </div>
+                    <div class="certification-details">
+                        <h3>Microsoft Certified: Azure Data Engineer Associate</h3>
+                        <p>Microsoft | 2023</p>
+                    </div>
+                </li>
+            </ul>
+        </section>
+
+        <section class="content-section">
+            <h2 class="section-title">Research Publications</h2>
+            <p>During my academic journey, I've contributed to research in data analytics and machine learning applications:</p>
+
+            <ul class="publications-list">
+                <li class="publication-item">
+                    <div class="publication-title">Enhancing Recommendation Systems with Deep Learning Approaches: A Comparative Study</div>
+                    <div class="publication-authors">Liu, K., Johnson, S., Martinez, A.</div>
+                    <div class="publication-venue">International Conference on Data Engineering and Analytics</div>
+                    <div class="publication-year">2024</div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-title">Optimizing ETL Pipelines for Large-Scale Data Processing in Cloud Environments</div>
+                    <div class="publication-authors">Wilson, R., Liu, K., Chen, H.</div>
+                    <div class="publication-venue">Journal of Cloud Computing and Data Management</div>
+                    <div class="publication-year">2023</div>
+                </li>
+
+                <li class="publication-item">
+                    <div class="publication-title">Sentiment Analysis Techniques for Social Media Data: A Comparative Analysis</div>
+                    <div class="publication-authors">Liu, K., Adams, J.</div>
+                    <div class="publication-venue">Workshop on Natural Language Processing Applications</div>
+                    <div class="publication-year">2021</div>
+                </li>
+            </ul>
+        </section>
+    </div>
+
+    <a href="#" class="back-to-top" id="backToTop">
+        <i class="fas fa-arrow-up"></i>
+    </a>
+
+    <footer>
+        <div class="footer-content">
+            <div class="footer-logo">KL</div>
+            <p>© 2025 Kaiwen Liu. All rights reserved.</p>
+            <div class="footer-contact">
+                <a href="mailto:kaiwen05@uw.edu"><i class="fas fa-envelope"></i></a>
+                <a href="tel:+12062182351"><i class="fas fa-phone"></i></a>
+                <a href="https://linkedin.com/" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/" target="_blank"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Navigation menu toggle for mobile
+        const hamburger = document.querySelector(".hamburger");
+        const navMenu = document.querySelector(".nav-menu");
+
+        hamburger.addEventListener("click", () => {
+            hamburger.classList.toggle("active");
+            navMenu.classList.toggle("active");
+        });
+
+        document.querySelectorAll(".nav-item a").forEach(n => n.addEventListener("click", () => {
+            hamburger.classList.remove("active");
+            navMenu.classList.remove("active");
